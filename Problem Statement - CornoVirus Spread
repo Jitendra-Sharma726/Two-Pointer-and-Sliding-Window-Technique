@@ -1,0 +1,109 @@
+# Coronavirus Spread
+
+An efficient solution to calculate the best-case (minimum) and worst-case (maximum) number of infected people in a 1D virus-spreading simulation using adjacency differences and cluster group analysis.
+
+---
+
+## 📌 Problem Description
+There are `N` people standing on a straight line. The position of the i-th person is given by \(X_i\) (where \(X_1 < X_2 < \dots < X_N\)). 
+
+Exactly one person is initially infected with COVID-19. The virus spreads from any infected person to an uninfected person if the distance between them is **at most 2**. Your task is to determine the **minimum** and **maximum** possible final number of infected people depending on who was the patient zero.
+
+### Constraints
+* 1 ≤ T ≤ 2000 (Number of test cases)
+* 2 ≤ N ≤ 8 (Size of the array)
+* \(0 \le X_i \le 10\)
+* \(X_1 < X_2 < \dots < X_N\) (Strictly increasing positions)
+
+---
+
+## 💡 Intuition & Approach
+
+### 1. Understanding Clusters
+Since the array of positions is already sorted (\(X_1 < X_2 < \dots < X_N\)), the virus can only spread sequentially between adjacent neighbors. 
+* If the distance between two adjacent people is ≤ 2 (\(X_{i+1} - X_i \le 2\)), they belong to the **same infection cluster**. If one person in this group is infected, everyone else in this group will eventually catch the virus.
+* If the distance is > 2, the chain breaks. The virus cannot cross this gap.
+
+### 2. Algorithmic Steps
+1. Track the size of contiguous groups where the gap between consecutive elements is ≤ 2.
+2. Traverse the list of positions, keeping a running count of the current cluster's size.
+3. When a gap > 2 is encountered, save the size of the completed cluster and reset the counter to 1 for the new cluster.
+4. The **minimum** possible infected people will be the size of the *smallest* cluster found.
+5. The **maximum** possible infected people will be the size of the *largest* cluster found.
+
+---
+
+## 🔬 Walkthrough Examples
+
+### Example 1
+* **Positions:** `[3, 6]`
+* **Differences:** 6 - 3 = 3 (Greater than 2)
+* **Clusters:** `[3]` (size 1) and `[6]` (size 1)
+* **Output:** `1 1`
+
+### Example 2
+* **Positions:** `[1, 3, 5]`
+* **Differences:** 3 - 1 = 2, 5 - 3 = 2 (Both ≤ 2)
+* **Clusters:** `[1, 3, 5]` (size 3)
+* **Output:** `3 3`
+
+### Example 3
+* **Positions:** `[1, 2, 5, 6, 7]`
+* **Differences:** 
+  * 2 - 1 = 1 ≤ 2
+  * 5 - 2 = 3 > 2 🛑 *Break!*
+  * 6 - 5 = 1 ≤ 2
+  * 7 - 6 = 1 ≤ 2
+* **Clusters:** `[1, 2]` (size 2) and `[5, 6, 7]` (size 3)
+* **Output:** `2 3` (Minimum cluster size is 2, Maximum is 3)
+
+---
+
+## 🚀 Python 3 Implementation
+
+```python
+import sys
+
+def solve():
+    input = sys.stdin.read
+    data = input().split()
+    
+    if not data:
+        return
+        
+    t = int(data[0])
+    idx = 1
+    
+    for _ in range(t):
+        n = int(data[idx])
+        X = [int(x) for x in data[idx+1 : idx+1+n]]
+        idx += 1 + n
+        
+        # Track all cluster sizes
+        cluster_sizes = []
+        current_size = 1
+        
+        for i in range(1, n):
+            # If adjacent distance is at most 2, they are in the same cluster
+            if X[i] - X[i-1] <= 2:
+                current_size += 1
+            else:
+                cluster_sizes.append(current_size)
+                current_size = 1
+                
+        # Append the final remaining cluster
+        cluster_sizes.append(current_size)
+        
+        # The answer is the smallest and largest cluster sizes
+        print(f"{min(cluster_sizes)} {max(cluster_sizes)}")
+
+if __name__ == '__main__':
+    solve()
+```
+
+---
+
+## 📊 Complexity Analysis
+
+* **Time Complexity:** $\mathcal{O}(N)$ per test case. We make a single linear scan through the array of sizes up to $N$.
+* **Space Complexity:** $\mathcal{O}(N)$ to temporarily store the sizes of the segmented clusters. Given $N \le 8$, this uses an infinitesimal, near-constant amount of memory.
