@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool checkSub(const string &m, const string &w) {
+    int l1 = m.length();
+    int l2 = w.length();
+    int i = 0, j = 0;
+
+    while (i < l1 && j < l2) {
+        if (m[i] == w[j]) {
+            i++;
+        }
+        j++;
+    }
+
+    return (i == l1);
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string m, w;
+        cin >> m >> w;
+
+        if (checkSub(m, w) || checkSub(w, m)) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+
+    return 0;
+}
