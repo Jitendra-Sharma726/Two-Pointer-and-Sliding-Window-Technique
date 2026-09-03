@@ -1,0 +1,112 @@
+# Subarrays with Exactly K Distinct Integers
+
+A highly efficient solution to count the number of contiguous subarrays containing exactly k distinct elements using the **Sliding Window** technique and **Two-Pointer** optimization.
+
+---
+
+## 📌 Problem Description
+Given an array of integers `arr` and an integer `k`, find the total number of contiguous subarrays that contain **exactly** `k` distinct integers.
+
+A subarray is defined as a continuous and non-empty sequence of elements within the array.
+
+### Constraints
+* 1 ≤ T ≤ 100 (Number of test cases)
+* 1 ≤ n ≤ 2 ⋅ 10⁴ (Size of the array)
+* 1 ≤ k ≤ n
+* \(1 \le \text{arr}[i] \le n\)
+
+---
+
+## 💡 Intuition & Approach
+
+### 1. The Core Trick (Prefix Subtraction)
+Counting subarrays with *exactly* k distinct integers directly can be challenging because a sliding window expands and contracts dynamically. Instead, we can break down the problem into a simpler variant:
+
+\[\text{Exactly}(k) = \text{AtMost}(k) - \text{AtMost}(k - 1)\]
+
+Where `AtMost(x)` counts the number of contiguous subarrays that contain **at most** x distinct integers. 
+
+### 2. Sliding Window Mechanics
+To compute `AtMost(x)` in linear time, we maintain a sliding window using two pointers, `left` and `right`:
+1. **Expand:** Move the `right` pointer to include a new element in our window and track its frequency.
+2. **Shrink:** If the number of distinct elements inside our window exceeds x, increment the `left` pointer to shrink the window until the distinct count drops back to ≤ x.
+3. **Count:** At each step, the number of valid subarrays ending at the current `right` index is given by `(right - left + 1)`. We add this to our cumulative sum.
+
+---
+
+## 🔬 Walkthrough Example
+
+### Input
+* `arr = [1, 2, 1, 2, 3]`
+* `k = 2`
+
+### Step 1: Calculate `AtMost(2)`
+* Valid windows: `[1]`, `[1, 2]`, `[2]`, `[2, 1]`, `[1, 2, 1]`, `[2, 1, 2]`, `[1, 2, 1, 2]`, `[2]`, `[2, 3]`, `[3]`
+* **Total Subarrays:** 12
+
+### Step 2: Calculate `AtMost(1)`
+* Valid windows: `[1]`, `[2]`, `[1]`, `[2]`, `[3]` (Only windows with 1 unique number)
+* **Total Subarrays:** 5
+
+### Step 3: Compute Final Result
+\[\text{Exactly}(2) = 12 - 5 = 7\]
+*The 7 exact subarrays are: `[1,2]`, `[2,1]`, `[1,2,1]`, `[2,1,2]`, `[1,2,1,2]`, `[2,3]`*
+
+---
+
+## 🚀 Python 3 Implementation
+
+```python
+def subarraysWithKDistinct(arr: list[int], k: int) -> int:
+    """
+    Computes the number of contiguous subarrays that contain exactly k distinct integers.
+    """
+    def atMostK(target_k: int) -> int:
+        if target_k <= 0:
+            return 0
+            
+        count = 0
+        left = 0
+        freq = {}
+        
+        for right in range(len(arr)):
+            # Add current element to window
+            freq[arr[right]] = freq.get(arr[right], 0) + 1
+            
+            # Shrink window if unique element limit is breached
+            while len(freq) > target_k:
+                freq[arr[left]] -= 1
+                if freq[arr[left]] == 0:
+                    del freq[arr[left]]
+                left += 1
+                
+            # Add total possible valid subarrays ending at 'right'
+            count += (right - left + 1)
+            
+        return count
+
+    return atMostK(k) - atMostK(k - 1)
+
+# Template to handle standard competitive programming inputs
+if __name__ == '__main__':
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    
+    if data:
+        t = int(data[0])
+        idx = 1
+        for _ in range(t):
+            n = int(data[idx])
+            k = int(data[idx+1])
+            arr = [int(x) for x in data[idx+2 : idx+2+n]]
+            idx += 2 + n
+            print(subarraysWithKDistinct(arr, k))
+```
+
+---
+
+## 📊 Complexity Analysis
+
+* **Time Complexity:** $\mathcal{O}(n)$ per test case. Both the `left` and `right` pointers traverse the array exactly once. Hash map (dictionary) operations take $\mathcal{O}(1)$ time on average.
+* **Space Complexity:** $\mathcal{O}(k)$ to store the frequency dictionary containing at most $k + 1$ distinct elements at any given moment.
