@@ -1,0 +1,84 @@
+# Sort Array by Parity (Stable Parity Sort)
+
+An efficient solution to partition an array such that all odd numbers appear before all even numbers, while strictly preserving their original relative order (**Stable Sorting**).
+
+---
+
+## 📌 Problem Description
+Given an array of integers, sort the array such that all odd numbers come before all even numbers while maintaining the original relative order of the odd and even elements.
+
+### Constraints
+* \(1 \le N \le 10^5\) (Size of the array)
+* \(0 \le a[i] \le 10^9\) (Value of elements)
+
+---
+
+## 💡 Intuition & Approach
+
+### 1. The Stability Requirement
+The problem specifies that we must maintain the **original relative order** of elements within their parity groups. 
+* Standard two-pointer partitions (like the one used in QuickSort) are **unstable** because swapping elements changes their relative order.
+* To maintain stability efficiently, we can use a **linear scan filter approach** or a **stable sorting criteria**.
+
+### 2. Linear Scan with Auxiliary Lists (Optimal & Clean)
+1. Traverse the array from left to right.
+2. If an element is odd, append it to an `odds` list.
+3. If an element is even, append it to an `evens` list.
+4. Concatenate the two lists (`odds + evens`) to form the final result.
+
+This guarantees that elements are processed in their exact appearance order, meeting the stability constraint.
+
+---
+
+## 🔬 Walkthrough Examples
+
+### Example 1
+* **Input:** `[3, 1, 2, 4, 5]`
+* **Odd Numbers (in order):** `[3, 1, 5]`
+* **Even Numbers (in order):** `[2, 4]`
+* **Combined Output:** `[3, 1, 5, 2, 4]`
+
+### Example 2
+* **Input:** `[2, 4, 6, 1, 3, 5]`
+* **Odd Numbers (in order):** `[1, 3, 5]`
+* **Even Numbers (in order):** `[2, 4, 6]`
+* **Combined Output:** `[1, 3, 5, 2, 4, 6]`
+
+---
+
+## 🚀 Python 3 Implementation
+
+```python
+import sys
+
+def sortArrayByParity(arr: list[int]) -> list[int]:
+    """
+    Partitions the array placing all odd integers before even ones,
+    while maintaining their original relative order.
+    """
+    odds = [x for x in arr if x % 2 != 0]
+    evens = [x for x in arr if x % 2 == 0]
+    
+    return odds + evens
+
+if __name__ == '__main__':
+    # Fast I/O optimization for large inputs
+    input = sys.stdin.read
+    data = input().split()
+    
+    if data:
+        n = int(data[0])
+        arr = [int(x) for x in data[1:n+1]]
+        
+        result = sortArrayByParity(arr)
+        
+        # Output format matching specifications
+        print(*(result))
+```
+
+---
+
+## 📊 Complexity Analysis
+
+* **Time Complexity:** $\mathcal{O}(N)$. We iterate through the array of size $N$ to separate the numbers, which takes linear time.
+* **Space Complexity:** $\mathcal{O}(N)$. Auxiliary space is required to store the filtered `odds` and `evens` lists before recombination.
