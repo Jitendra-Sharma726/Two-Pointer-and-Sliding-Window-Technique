@@ -1,0 +1,101 @@
+# Special Substring
+
+Given a string `S` containing only lowercase English letters, find the **length of the longest contiguous substring** that satisfies this condition:
+
+> Each character can appear at most as many times as its position in the alphabet.
+
+For example:
+
+* `a → 1` time
+* `b → 2` times
+* `c → 3` times
+* ...
+* `z → 26` times
+
+### Example
+
+For:
+
+```text
+S = "abbb"
+```
+
+* `a` can appear at most `1` time.
+* `b` can appear at most `2` times.
+
+So the longest valid substring is `"abb"`.
+
+**Answer:** `3`
+
+## Input
+
+The first line contains an integer `T`, the number of test cases.
+
+For each test case:
+
+* The first line contains an integer `N`, the length of the string.
+* The second line contains the string `S`.
+
+## Output
+
+For each test case, print the length of the **longest valid substring**.
+
+## Constraints
+
+* `1 ≤ T ≤ 2500`
+* `1 ≤ N ≤ 10⁵`
+* `ΣN ≤ 5 × 10⁵`
+* `S` contains only lowercase English letters.
+
+## Sample Input
+
+```text
+2
+6
+jyjerm
+4
+abbb
+```
+
+## Sample Output
+
+```text
+6
+3
+```
+
+## Explanation
+
+### Test Case 1
+
+```text
+S = "jyjerm"
+```
+
+Every character occurs within its allowed frequency, so the entire string is valid.
+
+**Answer:** `6`
+
+### Test Case 2
+
+```text
+S = "abbb"
+```
+
+`b` can appear at most `2` times, so `"abbb"` is invalid.
+
+The longest valid substring is `"abb"`.
+
+**Answer:** `3`
+
+## Goal
+
+Find the **longest contiguous substring** where every character appears no more than its alphabet position.
+
+## Expected Complexity
+
+* **Time:** `O(N)` per test case
+* **Total Time:** `O(ΣN)`
+* **Space:** `O(26)`
+
+A **sliding window** with character frequency counting can solve this efficiently.
