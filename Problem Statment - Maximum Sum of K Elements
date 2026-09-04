@@ -1,0 +1,63 @@
+# Maximum Sum of K Elements
+
+Given an array `A` of `N` integers and an integer `K`, find the **maximum sum of any contiguous subarray of size `K`**.
+
+Use the **Sliding Window** technique to solve the problem efficiently.
+
+## Input
+
+* First line: `N K` — size of the array and window size.
+* Second line: `N` integers representing array `A`.
+
+## Output
+
+Print the **maximum sum** of any `K` consecutive elements.
+
+## Constraints
+
+* `2 ≤ N ≤ 10⁵`
+* `2 ≤ K ≤ N`
+* `1 ≤ A[i] ≤ 10⁹`
+
+## Example
+
+### Input
+
+```text
+10 3
+9 8 2 4 1 9 9 5 1 8
+```
+
+### Output
+
+```text
+23
+```
+
+### Explanation
+
+The subarray:
+
+```text
+9 9 5
+```
+
+has the maximum sum:
+
+```text
+9 + 9 + 5 = 23
+```
+
+Using a sliding window, when moving to the next window:
+
+```text
+new_sum = old_sum - outgoing_element + incoming_element
+```
+
+This avoids recalculating the entire window.
+
+## Goal
+
+Find the **maximum sum of `K` consecutive elements** using the sliding window technique.
+
+**Expected Complexity:** `O(N)` time and `O(1)` extra space.
