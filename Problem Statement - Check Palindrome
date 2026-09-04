@@ -1,0 +1,76 @@
+# Check Palindrome
+
+Given a string `S`, determine whether it can be made a **palindrome by deleting at most one character**.
+
+You can either:
+
+* Delete **zero characters** if the string is already a palindrome.
+* Delete **exactly one character** to make it a palindrome.
+
+## Input
+
+* First line: `N` — length of the string.
+* Second line: `S` — the given string.
+
+## Output
+
+Print:
+
+* `true` if `S` can become a palindrome after deleting at most one character.
+* `false` otherwise.
+
+## Constraints
+
+* `1 ≤ |S| ≤ 10⁵`
+
+## Examples
+
+### Example 1
+
+**Input:**
+
+```text
+4
+abca
+```
+
+**Output:**
+
+```text
+true
+```
+
+**Explanation:**
+
+Delete `b` (or `c`) to get:
+
+```text
+aca
+```
+
+`aca` is a palindrome.
+
+### Example 2
+
+**Input:**
+
+```text
+4
+batr
+```
+
+**Output:**
+
+```text
+false
+```
+
+**Explanation:**
+
+The string cannot be converted into a palindrome by deleting at most one character.
+
+## Goal
+
+Check efficiently whether the given string can become a palindrome after deleting **at most one character**.
+
+**Expected Complexity:** `O(N)` time and `O(1)` extra space.
