@@ -1,0 +1,101 @@
+# Minimum Similar Substring
+
+Given two strings `S` and `T`, find the **shortest substring of `S`** that contains every character of `T`, including duplicate characters.
+
+A substring is **similar to `T`** if it contains all characters of `T` with at least the same frequency.
+
+If multiple shortest substrings exist, return the one that appears **earliest in `S`**.
+
+If no valid substring exists, print `IMPOSSIBLE`.
+
+### Example
+
+```text
+S = "aabcbcde"
+T = "ad"
+```
+
+The shortest substring containing both `a` and `d` is:
+
+```text
+abcbcd
+```
+
+Its length is:
+
+```text
+6
+```
+
+## Input
+
+* The first line contains two integers `|S|` and `|T|`.
+* The second line contains the string `S`.
+* The third line contains the string `T`.
+
+## Output
+
+If a valid substring exists:
+
+1. Print its length.
+2. Print the substring on the next line.
+
+If no such substring exists, print:
+
+```text
+IMPOSSIBLE
+```
+
+## Constraints
+
+* `1 ≤ |S|, |T| ≤ 10⁵`
+
+## Sample Input
+
+```text
+8 2
+aabcbcde
+ad
+```
+
+## Sample Output
+
+```text
+6
+abcbcd
+```
+
+## Explanation
+
+The substring must contain both:
+
+```text
+a → 1 occurrence
+d → 1 occurrence
+```
+
+Possible valid substrings include:
+
+```text
+abcbcd
+abcbcde
+```
+
+The shortest is:
+
+```text
+abcbcd
+```
+
+with length `6`.
+
+## Goal
+
+Find the **minimum-length contiguous substring of `S`** that contains all characters of `T` with the required frequencies.
+
+## Expected Complexity
+
+* **Time:** `O(|S| + |T|)`
+* **Space:** `O(1)` for a fixed character set
+
+Use a **sliding window / two-pointer** approach with character frequency counting.
