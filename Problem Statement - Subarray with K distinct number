@@ -1,0 +1,110 @@
+# Subarray with K Distinct Numbers
+
+Given an integer array `arr` and an integer `K`, count the number of **contiguous subarrays** that contain **exactly `K` distinct integers**.
+
+A subarray must be **non-empty** and contain consecutive elements from the array.
+
+### Example
+
+```text id="q0u5zt"
+arr = [4, 5, 4, 5, 1]
+K = 2
+```
+
+The valid subarrays contain exactly two distinct values.
+
+**Answer:** `7`
+
+## Input
+
+The first line contains an integer `T`, the number of test cases.
+
+For each test case:
+
+* The first line contains two integers `N` and `K`.
+* The second line contains `N` integers representing the array.
+
+## Output
+
+For each test case, print the number of contiguous subarrays containing **exactly `K` distinct integers**.
+
+If no such subarray exists, print `0`.
+
+## Constraints
+
+* `1 ≤ T ≤ 100`
+* `1 ≤ N ≤ 2 × 10⁴`
+* `1 ≤ K ≤ N`
+* `1 ≤ arr[i] ≤ N`
+* Sum of `N` over all test cases ≤ `2 × 10⁵`
+
+## Sample Input
+
+```text id="x8h3kq"
+2
+5 2
+4 5 4 5 1
+4 3
+1 2 2 3
+```
+
+## Sample Output
+
+```text id="c6g9v2"
+7
+1
+```
+
+## Explanation
+
+### Test Case 1
+
+```text id="q8p6j1"
+arr = [4, 5, 4, 5, 1]
+K = 2
+```
+
+There are `7` subarrays containing exactly two distinct integers:
+
+```text id="j9k2r4"
+[4,5]
+[5,4]
+[4,5]
+[5,1]
+[4,5,4]
+[5,4,5]
+[4,5,4,5]
+```
+
+**Answer:** `7`
+
+### Test Case 2
+
+```text id="r4m8x2"
+arr = [1, 2, 2, 3]
+K = 3
+```
+
+Only this subarray contains exactly three distinct integers:
+
+```text id="b3n7w5"
+[1,2,2,3]
+```
+
+**Answer:** `1`
+
+## Goal
+
+Count the number of contiguous subarrays containing **exactly `K` distinct values**.
+
+## Expected Complexity
+
+* **Time:** `O(N)` per test case
+* **Total Time:** `O(ΣN)`
+* **Space:** `O(N)`
+
+A **sliding window / two-pointer** approach can be used by calculating:
+
+```text
+Exactly K = At Most K - At Most (K - 1)
+```
