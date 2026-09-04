@@ -1,0 +1,77 @@
+# Flipping Subarray
+
+You are given a **binary array** containing only `0` and `1`.
+
+You must flip **exactly one contiguous subarray** of `0`s to `1`s.
+
+Find the **maximum number of consecutive `1`s** that can be obtained after the flip.
+
+## Input
+
+* First line: `N` — size of the array.
+* Second line: `N` integers containing only `0` and `1`.
+
+## Output
+
+Print the **maximum length of a contiguous subarray containing only `1`s** after performing exactly one flip.
+
+## Constraints
+
+* `1 ≤ N ≤ 10⁵`
+* `arr[i]` is either `0` or `1`.
+
+## Example 1
+
+**Input:**
+
+```text
+3
+0 1 0
+```
+
+**Output:**
+
+```text
+2
+```
+
+**Explanation:**
+
+Flip the first `0`:
+
+```text
+0 1 0 → 1 1 0
+```
+
+The longest sequence of `1`s has length `2`.
+
+## Example 2
+
+**Input:**
+
+```text
+3
+0 0 0
+```
+
+**Output:**
+
+```text
+3
+```
+
+**Explanation:**
+
+Flip the entire array:
+
+```text
+0 0 0 → 1 1 1
+```
+
+The longest sequence of `1`s has length `3`.
+
+## Goal
+
+Find the longest possible contiguous sequence of `1`s after **exactly one contiguous flip**.
+
+**Expected Complexity:** `O(N)` time and `O(1)` extra space.
