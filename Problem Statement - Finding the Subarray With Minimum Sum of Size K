@@ -1,0 +1,84 @@
+# Finding the Subarray with Minimum Sum of Size K
+
+Given an array `A` of `N` integers and an integer `K`, find the **minimum sum of any contiguous subarray of size `K`**.
+
+Use the **Sliding Window** technique to solve the problem efficiently.
+
+## Input
+
+* First line: `N K` — size of the array and subarray size.
+* Second line: `N` integers representing array `A`.
+
+## Output
+
+Print the **minimum sum** of any `K` consecutive elements.
+
+## Constraints
+
+* `1 ≤ N ≤ 10⁵`
+* `1 ≤ K ≤ N`
+* `|A[i]| ≤ 10⁹`
+
+## Example 1
+
+**Input:**
+
+```text
+10 3
+1 2 3 4 5 6 7 8 9 10
+```
+
+**Output:**
+
+```text
+6
+```
+
+**Explanation:**
+
+The minimum-sum subarray is:
+
+```text
+1 2 3
+```
+
+Sum:
+
+```text
+1 + 2 + 3 = 6
+```
+
+## Example 2
+
+**Input:**
+
+```text
+5 2
+4 3 2 1 5
+```
+
+**Output:**
+
+```text
+3
+```
+
+**Explanation:**
+
+The minimum-sum subarray is:
+
+```text
+1 2
+```
+
+Sum:
+
+```text
+1 + 2 = 3
+```
+
+## Goal
+
+Find the **minimum sum of `K` consecutive elements** using the sliding window technique.
+
+**Expected Complexity:** `O(N)` time and `O(1)` extra space.
