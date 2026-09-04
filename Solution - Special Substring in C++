@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int findMaxSubstring(string &s) {
+        int n = s.size();
+        int left = 0, right = 0;
+        map<char, int> mp;
+        int max_size = INT_MIN;
+        
+        while (right < n) {
+            mp[s[right]]++;
+            while (mp[s[right]] > s[right] - 'a' + 1) {
+                mp[s[left]]--;
+                left++;
+            }
+            max_size = max(max_size, right - left + 1);
+            right++;
+        }
+        return max_size;
+    }
+};
