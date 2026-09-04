@@ -1,0 +1,72 @@
+# Check Square
+
+Given a positive integer `c`, determine whether it can be written as the **sum of two perfect squares**:
+
+```text
+c = a² + b²
+```
+
+where `a` and `b` are non-negative integers.
+
+## Input
+
+A single integer `c`.
+
+## Output
+
+Print:
+
+* `true` if `c` can be represented as the sum of two squares.
+* `false` otherwise.
+
+## Constraints
+
+* `1 ≤ c ≤ 10⁹`
+
+## Examples
+
+### Example 1
+
+**Input:**
+
+```text
+25
+```
+
+**Output:**
+
+```text
+true
+```
+
+**Explanation:**
+
+`25 = 3² + 4² = 9 + 16`
+
+### Example 2
+
+**Input:**
+
+```text
+15
+```
+
+**Output:**
+
+```text
+false
+```
+
+**Explanation:**
+
+There are no non-negative integers `a` and `b` such that:
+
+```text
+a² + b² = 15
+```
+
+## Goal
+
+Check whether the given number can be represented as the **sum of two perfect squares**.
+
+**Expected Complexity:** `O(√c)` time and `O(1)` extra space.
