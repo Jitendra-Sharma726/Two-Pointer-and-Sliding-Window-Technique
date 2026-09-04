@@ -1,0 +1,57 @@
+# The Great Run
+
+Vishal can run at his **maximum speed for exactly `K` consecutive kilometres**.
+
+Each kilometre has a certain number of girls. A girl is impressed only when Vishal runs at maximum speed past her.
+
+Find the **maximum number of girls** Vishal can impress by choosing the best continuous stretch of `K` kilometres.
+
+## Input
+
+* First line: `T` — number of test cases.
+* For each test case:
+
+  * First line: `N K` — length of the track and the number of kilometres Vishal can run at maximum speed.
+  * Second line: `N` integers representing the number of girls in each kilometre.
+
+## Output
+
+For each test case, print the **maximum number of girls** in any `K` consecutive kilometres.
+
+## Constraints
+
+* `1 ≤ T ≤ 10`
+* `1 ≤ K ≤ N ≤ 100`
+* `1 ≤ A[i] ≤ 100`
+
+## Example
+
+### Input
+
+```text
+1
+7 2
+2 4 8 1 2 1 8
+```
+
+### Output
+
+```text
+12
+```
+
+### Explanation
+
+The best `2`-kilometre stretch is:
+
+```text
+4 + 8 = 12
+```
+
+So, Vishal can impress a maximum of **12 girls**.
+
+## Goal
+
+Find the **maximum sum of any `K` consecutive elements** in the array.
+
+**Expected Complexity:** `O(N)` time and `O(1)` extra space using the **sliding window technique**.
