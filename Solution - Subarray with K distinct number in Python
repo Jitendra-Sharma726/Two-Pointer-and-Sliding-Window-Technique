@@ -1,0 +1,42 @@
+def subarraysWithKDistinct(arr, k):
+    def atMost(target_k):
+        if target_k <= 0:
+            return 0
+            
+        count = 0
+        left = 0
+        freq = {}
+        
+        for right in range(len(arr)):
+            # Add the current element to the window
+            freq[arr[right]] = freq.get(arr[right], 0) + 1
+            
+            # If we have more than target_k distinct numbers, shrink from the left
+            while len(freq) > target_k:
+                freq[arr[left]] -= 1
+                if freq[arr[left]] == 0:
+                    del freq[arr[left]]
+                left += 1
+                
+            # The number of valid subarrays ending at 'right' is (right - left + 1)
+            count += (right - left + 1)
+            
+        return count
+
+    return atMost(k) - atMost(k - 1)
+
+# Driver code to handle the template structure
+if __name__ == '__main__':
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    
+    if data:
+        t = int(data[0])
+        idx = 1
+        for _ in range(t):
+            n = int(data[idx])
+            k = int(data[idx+1])
+            arr = [int(x) for x in data[idx+2 : idx+2+n]]
+            idx += 2 + n
+            print(subarraysWithKDistinct(arr, k))
