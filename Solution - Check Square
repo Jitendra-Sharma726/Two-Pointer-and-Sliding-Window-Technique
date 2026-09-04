@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+bool judgeSquareSum(long long int c) {
+    int rtc = sqrt(c);
+    int left = 1;
+    int right = rtc;
+    while(left<right){
+        int sum = left*left + right*right;
+        if(sum > c) right--;
+        else if(sum < c)left++;
+        else return true;
+    }
+    return false;
+}
+
+int main() {
+    long long int c;
+    cin >> c;
+
+    if (judgeSquareSum(c)) {
+        cout << "true" << endl;
+    } else {
+        cout << "false" << endl;
+    }
+    return 0;
+}
