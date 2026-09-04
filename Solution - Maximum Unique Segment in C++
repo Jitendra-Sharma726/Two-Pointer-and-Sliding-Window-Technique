@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+void solveTestCase() {
+    int n;
+    cin >> n; // Read the number of elements
+    vector<int> C(n + 1); // Resize C to 1-based indexing
+    vector<int> W(n + 1); // Resize W to 1-based indexing
+
+    for (int i = 1; i <= n; i++) {
+        cin >> C[i]; // Read values into C
+    }
+    for (int i = 1; i <= n; i++) {
+        cin >> W[i]; // Read values into W
+    }
+
+    vector<bool> checked(n + 1, false); // Initialize checked array
+    int next_r = 1; // Start from index 1 for 1-based indexing
+    long long sum = 0;
+    long long answer = 0;
+
+    for (int l = 1; l <= n; l++) {
+        // Expand the right pointer
+        while (next_r <= n && !checked[C[next_r]]) {
+            checked[C[next_r]] = true;
+            sum += W[next_r];
+            next_r++;
+        }
+        answer = max(answer, sum);
+        
+        // Contract the left pointer
+        sum -= W[l];
+        checked[C[l]] = false;
+    }
+
+    cout << answer << endl; // Output the result
+}
+
+int main() {
+    int t;
+    cin >> t; // Read the number of test cases
+    while (t--) {
+        solveTestCase(); // Process each test case
+    }
+    return 0;
+}
