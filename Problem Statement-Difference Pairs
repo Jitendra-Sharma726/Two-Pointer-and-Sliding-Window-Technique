@@ -1,0 +1,67 @@
+# Difference Pairs
+
+Given an array `A` of `N` integers and an integer `B`, determine whether there exists a pair of elements whose **absolute difference is exactly `B`**.
+
+## Function
+
+```text
+hasPairWithDifference(A, N, B)
+```
+
+### Parameters
+
+* `A` — Array of `N` integers
+* `N` — Number of elements in the array
+* `B` — Target difference
+
+### Return Value
+
+* Return `1` if a valid pair exists.
+* Return `0` otherwise.
+
+A valid pair must satisfy:
+
+```text
+i < j
+abs(A[i] - A[j]) == B
+```
+
+## Constraints
+
+* `1 ≤ T ≤ 100`
+* `1 ≤ N ≤ 10⁵`
+* `0 ≤ B ≤ 2 × 10⁹`
+* `-10⁹ ≤ A[i] ≤ 10⁹`
+* The total `N` across all test cases is at most `2 × 10⁵`.
+
+## Example
+
+### Input
+
+```text
+3
+6 78
+5 10 3 2 50 80
+2 30
+-10 20
+4 5
+1 2 3 4
+```
+
+### Output
+
+```text
+1
+1
+0
+```
+
+### Explanation
+
+* **Test Case 1:** `|80 - 2| = 78` → `1`
+* **Test Case 2:** `|20 - (-10)| = 30` → `1`
+* **Test Case 3:** No pair has difference `5` → `0`
+
+## Goal
+
+Check efficiently whether the array contains **two elements with an absolute difference equal to `B`**.
