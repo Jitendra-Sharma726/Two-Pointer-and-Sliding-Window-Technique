@@ -1,0 +1,110 @@
+# Maximum Unique Segment
+
+You are given two arrays:
+
+* `C` — contains the values used to determine whether a segment is unique.
+* `W` — contains the weight/value of each element.
+
+A segment `[L, R]` is **unique** if every element in `C[L...R]` is different.
+
+The **sum** of a segment is:
+
+```text
+W[L] + W[L+1] + ... + W[R]
+```
+
+Find the **maximum sum of any unique segment**.
+
+### Example
+
+```text
+C = [0, 1, 2, 0, 2]
+W = [5, 6, 7, 8, 2]
+```
+
+The segment:
+
+```text
+C[2...4] = [1, 2, 0]
+```
+
+contains no duplicate values.
+
+Its sum is:
+
+```text
+6 + 7 + 8 = 21
+```
+
+So the answer is:
+
+```text
+21
+```
+
+## Input
+
+The first line contains an integer `T`, the number of test cases.
+
+For each test case:
+
+* The first line contains an integer `N`.
+* The second line contains `N` integers representing array `C`.
+* The third line contains `N` integers representing array `W`.
+
+## Output
+
+For each test case, print the **maximum sum of a unique segment**.
+
+## Constraints
+
+* `1 ≤ T ≤ 100`
+* `1 ≤ N ≤ 10⁶`
+* `0 ≤ C[i] < N`
+* `0 ≤ W[i] ≤ 10⁹`
+* Sum of `N` over all test cases ≤ `10⁶`
+
+## Sample Input
+
+```text
+1
+5
+0 1 2 0 2
+5 6 7 8 2
+```
+
+## Sample Output
+
+```text
+21
+```
+
+## Explanation
+
+The segment:
+
+```text
+[1, 2, 0]
+```
+
+contains three unique values.
+
+Its corresponding weight sum is:
+
+```text
+6 + 7 + 8 = 21
+```
+
+No other unique segment has a larger sum.
+
+## Goal
+
+Find the **maximum possible sum of a contiguous segment where all values in `C` are unique**.
+
+## Expected Complexity
+
+* **Time:** `O(N)` per test case
+* **Total Time:** `O(ΣN)`
+* **Space:** `O(N)`
+
+A **sliding window / two-pointer** approach with a frequency or last-seen array can solve this efficiently.
