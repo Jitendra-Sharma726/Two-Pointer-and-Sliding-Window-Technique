@@ -1,0 +1,64 @@
+# Maximum Common Elements
+
+Given two arrays `A` and `B` of size `N`, where all elements within each array are distinct, find the **number of elements that appear in both arrays**.
+
+## Function
+
+```text
+countCommonElements(A, B, N)
+```
+
+### Parameters
+
+* `A` — First array of `N` distinct integers
+* `B` — Second array of `N` distinct integers
+* `N` — Size of both arrays
+
+### Return Value
+
+Return the number of elements that are present in **both** arrays.
+
+## Constraints
+
+* `1 ≤ T ≤ 100`
+* `1 ≤ N ≤ 10⁵`
+* `1 ≤ A[i], B[i] ≤ 10⁹`
+* Elements in each array are distinct.
+* The sum of `N` over all test cases is at most `2 × 10⁵`.
+
+## Example
+
+### Input
+
+```text
+3
+4
+1 2 3 4
+1 3 4 5
+3
+2 4 1
+1 4 2
+1
+2
+3
+```
+
+### Output
+
+```text
+3
+3
+0
+```
+
+### Explanation
+
+* **Test Case 1:** Common elements are `1, 3, 4` → `3`
+* **Test Case 2:** Common elements are `1, 2, 4` → `3`
+* **Test Case 3:** No common elements → `0`
+
+## Goal
+
+Efficiently find how many elements are common to both arrays.
+
+**Expected Complexity:** `O(N)` average time using a hash set.
