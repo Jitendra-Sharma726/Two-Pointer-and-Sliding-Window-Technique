@@ -1,0 +1,145 @@
+# Asymmetric Swaps
+
+You are given two arrays `A` and `B`, both of size `N`.
+
+In one operation, you can **swap any element of `A` with any element of `B`**.
+
+You can perform the operation any number of times, including zero times.
+
+Your goal is to minimize:
+
+```text
+max(A) - min(A)
+```
+
+after performing the swaps.
+
+## Example
+
+```text
+A = [2, 1, 3]
+B = [1, 4, 1]
+```
+
+By swapping elements between `A` and `B`, we can make:
+
+```text
+A = [1, 1, 1]
+```
+
+Therefore:
+
+```text
+max(A) - min(A) = 1 - 1 = 0
+```
+
+**Answer:** `0`
+
+## Input
+
+The first line contains an integer `T`, the number of test cases.
+
+For each test case:
+
+* The first line contains an integer `N`.
+* The second line contains `N` integers representing array `A`.
+* The third line contains `N` integers representing array `B`.
+
+## Output
+
+For each test case, print the **minimum possible value of `max(A) - min(A)`** after performing any number of swaps.
+
+## Constraints
+
+* `1 ≤ T ≤ 10⁵`
+* `1 ≤ N ≤ 2 × 10⁵`
+* `1 ≤ A[i], B[i] ≤ 10⁹`
+* Sum of `N` over all test cases ≤ `2 × 10⁵`
+
+## Sample Input
+
+```text id="j8x8po"
+3
+3
+2 1 3
+1 4 1
+4
+2 1 4 3
+3 2 6 2
+5
+2 8 4 9 7
+7 3 6 8 4
+```
+
+## Sample Output
+
+```text id="y9e3g7"
+0
+1
+2
+```
+
+## Explanation
+
+### Test Case 1
+
+```text
+A = [2, 1, 3]
+B = [1, 4, 1]
+```
+
+After suitable swaps:
+
+```text
+A = [1, 1, 1]
+```
+
+So:
+
+```text
+max(A) - min(A) = 0
+```
+
+### Test Case 2
+
+After optimal swaps:
+
+```text
+A = [2, 2, 3, 2]
+```
+
+Therefore:
+
+```text
+3 - 2 = 1
+```
+
+### Test Case 3
+
+After optimal swaps:
+
+```text
+A = [7, 8, 8, 9, 7]
+```
+
+Therefore:
+
+```text
+9 - 7 = 2
+```
+
+## Goal
+
+Use swaps between `A` and `B` to make the elements of `A` as close together as possible and minimize:
+
+```text
+max(A) - min(A)
+```
+
+## Expected Complexity
+
+* **Time:** `O(N log N)` per test case
+* **Total Time:** `O(ΣN log N)`
+* **Space:** `O(N)`
+
+A **sorting + two-pointer** approach can be used to find the minimum possible range.
