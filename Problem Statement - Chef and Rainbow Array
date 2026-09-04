@@ -1,0 +1,69 @@
+# Chef and Rainbow Array
+
+An array is called a **Rainbow Array** if it follows this pattern:
+
+```text
+1 2 3 4 5 6 7 6 5 4 3 2 1
+```
+
+Each number can appear multiple times, but:
+
+* Values must increase from `1` to `7`.
+* After `7`, values must decrease from `6` back to `1`.
+* The array must be symmetric.
+* Every value from `1` to `7` must appear.
+
+## Input
+
+* First line: `T` — number of test cases.
+* For each test case:
+
+  * First line: `N` — size of the array.
+  * Second line: `N` integers representing the array.
+
+## Output
+
+For each test case, print:
+
+* `yes` if the array is a Rainbow Array.
+* `no` otherwise.
+
+## Constraints
+
+* `1 ≤ T ≤ 100`
+* `7 ≤ N ≤ 100`
+* `1 ≤ A[i] ≤ 10`
+
+## Example
+
+### Input
+
+```text
+3
+19
+1 2 3 4 4 5 6 6 6 7 6 6 6 5 4 4 3 2 1
+14
+1 2 3 4 5 6 7 6 5 4 3 2 1 1
+13
+1 2 3 4 5 6 8 6 5 4 3 2 1
+```
+
+### Output
+
+```text
+yes
+no
+no
+```
+
+### Explanation
+
+* **Test Case 1:** Follows the required Rainbow pattern → `yes`
+* **Test Case 2:** The array is not symmetric → `no`
+* **Test Case 3:** Contains `8` instead of `7` → `no`
+
+## Goal
+
+Check whether the given array follows the **Rainbow Array pattern**.
+
+**Expected Complexity:** `O(N)` per test case.
