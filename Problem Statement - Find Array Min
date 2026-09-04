@@ -1,0 +1,102 @@
+# Find Array Min
+
+You are given three **sorted (non-decreasing) arrays** `A`, `B`, and `C`.
+
+For any three elements `A[i]`, `B[j]`, and `C[k]`, define:
+
+```text
+f(i, j, k) = max(
+    |A[i] - B[j]|,
+    |B[j] - C[k]|,
+    |A[i] - C[k]|
+)
+```
+
+Your task is to find the **minimum possible value of `f(i, j, k)`**.
+
+## Input
+
+* First line: `T` — number of test cases.
+* For each test case:
+
+  * First line: `NA NB NC` — sizes of the three arrays.
+  * Second line: `NA` sorted integers for array `A`.
+  * Third line: `NB` sorted integers for array `B`.
+  * Fourth line: `NC` sorted integers for array `C`.
+
+## Output
+
+For each test case, print the **minimum possible value of `f(i, j, k)`**.
+
+## Constraints
+
+* `1 ≤ T ≤ 10`
+* `1 ≤ NA, NB, NC ≤ 10⁵`
+* `1 ≤ A[i], B[i], C[i] ≤ 10⁹`
+* All three arrays are sorted in non-decreasing order.
+
+## Example
+
+### Input
+
+```text
+3
+4 2 2
+2 5 10 15
+4 4
+10 15
+1 1 1
+5
+10
+25
+6 6 2
+4 8 10 15 15 20
+6 15 25 28 28 45
+10 15
+```
+
+### Output
+
+```text
+6
+20
+0
+```
+
+### Explanation
+
+**Test Case 1:**
+
+Choose:
+
+```text
+A = 10, B = 4, C = 10
+```
+
+Then:
+
+```text
+f = max(|10-4|, |4-10|, |10-10|)
+  = max(6, 6, 0)
+  = 6
+```
+
+**Test Case 2:**
+
+The minimum possible value is `20`.
+
+**Test Case 3:**
+
+Choose:
+
+```text
+A = 15, B = 15, C = 15
+```
+
+All differences are `0`, so the answer is `0`.
+
+## Goal
+
+Find three elements—one from each sorted array—that are as close together as possible.
+
+**Expected Complexity:** `O(NA + NB + NC)` per test case using the **three-pointer technique**.
