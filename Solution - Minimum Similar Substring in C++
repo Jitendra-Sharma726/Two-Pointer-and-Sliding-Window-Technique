@@ -1,0 +1,61 @@
+
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <climits>
+
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    string s, t;
+    cin >> s >> t;
+
+    unordered_map<char, int> charCountT, charCountWindow;
+    
+    // Count characters in t
+    for (char c : t) {
+        charCountT[c]++;
+    }
+
+    int required = charCountT.size();
+    int formed = 0;
+    int left = 0, right = 0;
+    int minLength = INT_MAX;
+    int minLeft = 0;
+
+    while (right < n) {
+        char c = s[right];
+        charCountWindow[c]++;
+
+        if (charCountT.find(c) != charCountT.end() && charCountWindow[c] == charCountT[c]) {
+            formed++;
+        }
+
+        while (left <= right && formed == required) {
+            if (right - left + 1 < minLength) {
+                minLength = right - left + 1;
+                minLeft = left;
+            }
+
+            char leftChar = s[left];
+            charCountWindow[leftChar]--;
+
+            if (charCountT.find(leftChar) != charCountT.end() && charCountWindow[leftChar] < charCountT[leftChar]) {
+                formed--;
+            }
+            left++;
+        }
+        right++;
+    }
+
+    if (minLength == INT_MAX) {
+        cout << "IMPOSSIBLE" << endl;
+    } else {
+        cout << minLength << endl;
+        cout << s.substr(minLeft, minLength) << endl;
+    }
+
+    return 0;
+}
