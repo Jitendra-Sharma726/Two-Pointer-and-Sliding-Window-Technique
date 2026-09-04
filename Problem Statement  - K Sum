@@ -1,0 +1,72 @@
+# K Sum
+
+Given an array `arr` of positive integers and an integer `K`, choose exactly `K` elements from the **start, end, or a combination of both**.
+
+Find the **maximum possible sum**.
+
+## Input
+
+* First line: `N K` — size of the array and number of elements to choose.
+* Second line: `N` integers representing `arr`.
+
+## Output
+
+Print the **maximum sum** that can be obtained by choosing `K` elements from the ends of the array.
+
+## Constraints
+
+* `1 ≤ N ≤ 10⁵`
+* `1 ≤ K ≤ N`
+* `1 ≤ arr[i] ≤ 10⁶`
+
+## Example 1
+
+**Input:**
+
+```text
+5 3
+4 2 1 5 1
+```
+
+**Output:**
+
+```text
+10
+```
+
+**Explanation:**
+
+Choose `1` element from the start and `2` elements from the end:
+
+```text
+4 + 5 + 1 = 10
+```
+
+## Example 2
+
+**Input:**
+
+```text
+3 3
+1 2 3
+```
+
+**Output:**
+
+```text
+6
+```
+
+**Explanation:**
+
+Since `K = N`, take all elements:
+
+```text
+1 + 2 + 3 = 6
+```
+
+## Goal
+
+Find the **maximum sum of `K` elements** by choosing elements only from the **left end, right end, or both ends**.
+
+**Expected Complexity:** `O(K)` time and `O(1)` extra space using the **sliding window / two-pointer technique**.
