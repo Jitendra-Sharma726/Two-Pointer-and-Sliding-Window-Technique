@@ -1,0 +1,95 @@
+# Longest Substring Without Repeating Characters
+
+Given a string `S`, find the length of the **longest contiguous substring** that contains no repeated characters.
+
+### Example
+
+For:
+
+```text
+S = "abcabcbb"
+```
+
+The longest substring without repeating characters is `"abc"`.
+
+**Output:**
+
+```text
+3
+```
+
+## Input
+
+The first line contains a string `S`.
+
+## Output
+
+Print the length of the longest substring with all unique characters.
+
+## Constraints
+
+* `2 ≤ N ≤ 10⁵`
+* `N` is the length of `S`.
+* `S` may contain any valid characters.
+
+## Sample 1
+
+**Input:**
+
+```text
+abcabcbb
+```
+
+**Output:**
+
+```text
+3
+```
+
+**Explanation:**
+The longest substring is `"abc"`, with length `3`.
+
+## Sample 2
+
+**Input:**
+
+```text
+bbbb
+```
+
+**Output:**
+
+```text
+1
+```
+
+**Explanation:**
+Only one `b` can be included because repeating characters are not allowed.
+
+## Sample 3
+
+**Input:**
+
+```text
+abcccdefg
+```
+
+**Output:**
+
+```text
+5
+```
+
+**Explanation:**
+The longest substring without repeating characters is `"cdefg"`, with length `5`.
+
+## Goal
+
+Find the maximum length of a substring where **every character appears exactly once**.
+
+## Expected Complexity
+
+* **Time:** `O(N)`
+* **Space:** `O(N)`
+
+A **sliding window / two-pointer** approach can be used to solve this efficiently.
